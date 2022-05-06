@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Speedbee is a simple web application meant to help improve typing speed by giving you random shortest stories and a timer to see how long it takes you to type the story. Test typing speed here">
+    <meta name="keywords" content="Speedbee speedtest webapp typing speed fun test typing speed HTML, CSS, JavaScript">
+    <meta name="author" content="Bigfoot">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedBee - Test your typing speed</title>
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="ty.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 p-5" id="header">
+                <p id="header1" class="display-4">Test your typing speed level</p>
+                <p id="header2">Press ctrl to start and press ctrl to stop when you're done</p>
+            </div>
+            <div class="col-md-3 text-center" id="menu1">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-up-fill show" viewBox="0 0 16 16" id="volumeUp">
+                    <path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/>
+                    <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/>
+                    <path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8 3.49 3.49 0 0 1 8 10.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/>
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-volume-mute-fill" viewBox="0 0 16 16" id="muteBtn">
+                    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06zm7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0z"/>
+                  </svg>
+                
+
+                      <button class="p-2 navbar-toggler1 " id="menu-btn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                        Menu
+                      </button>
+
+                      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                         
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="openHelp()">Help</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="openAbout()">About</a>
+                          </li>
+                        </ul>
+                       
+                      </div>
+
+
+    
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7" id="textdiv">
+                <div class="text-center p-3" id="text1">
+                    
+                </div>
+                <div>
+                    <textarea 
+                        name="" 
+                        class="form-control mb-sm-5" 
+                        id="input" 
+                        onkeyup="textAreaAdjust(this)"
+                        onpaste="return false"
+                    >
+                    </textarea>
+                    <!--<input id="input" type="text" class="form-control input-lg">
+                    <button onclick="check()">Check</button>-->
+                </div>
+            </div>
+        
+            <div class="col-md-5 text-center" id="myTimer">
+                <div class="timerDisplay p-4">
+                    00 : 00 : 00 : 000
+                </div>
+                <div class="buttons">
+                    <button class="btn-lg" id="startTimer">START</button>
+                    <!--<button id="pauseTimer">Pause</button>
+                    <button id="resetTimer">Reset</button>-->
+                </div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary d-none" id="modal-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Launch static backdrop modal
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">SpeedBee</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body py-5">
+                    <label class="form-label d-block fs-3 fs-sm-1" id="name-label" for="nName">Enter your Nickname</label>
+                    <input placeholder="Bigfoot" autofocus class="input input-control fs-3 fs-sm" type="text" id="nName" name="name">
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="saveName-btn" onclick="playAudio()" data-bs-dismiss="modal">Continue</button>
+                <!--<button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary d-none" id="modal-btn2" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">
+            Launch remarks
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+               <!-- <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel2">yohoo!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>-->
+                <div class="modal-body py-5" id="modal-body-2">
+                    
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal" onclick="reload()">One more time</button>
+                <!--<button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary d-none" id="modal-btn3" data-bs-toggle="modal" data-bs-target="#staticBackdrop3">
+            Launch modal
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <!--<div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">SpeedBee</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>-->
+                <div class="modal-body py-5" id="modal-body-3">
+                   
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal" onclick="_continue()">Go back and correct</button>
+                <button type="button" class="btn btn-warning btn-lg" data-bs-dismiss="modal" onclick="reload()">Try another excerpt</button>
+                <!--<button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+            </div>
+        </div>
+
+         <!-- Button trigger modal -->
+         <button type="button" class="btn btn-primary d-none" id="modal-btn4" data-bs-toggle="modal" data-bs-target="#staticBackdrop4">
+            Launch help
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center" id="modal4">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel4">Help</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-5" id="modal-body4">
+                   <p>
+                       Hello there, simply hit the ctrl key to start the timer and focus on the input to start typing. Hit the ctrl key when you're done to stop the timer and see your results.
+                       Beware it is case sensitive and so everything must be typed exactly as the one in the excerpt.
+                   </p>
+                   <p>
+                       There are seven levels: Noob, Novice, Pro, Expert, Master, Grand Master and Legend. Try and beat these levels and get to the Legendary level.
+                   </p>
+                   <p>
+                       Have fun!
+                   </p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+            </div>
+        </div>
+
+         <!-- Button trigger modal -->
+         <button type="button" class="btn btn-primary d-none" id="modal-btn5" data-bs-toggle="modal" data-bs-target="#staticBackdrop5">
+            Launch About
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center" id="modal5">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel5">About</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body py-5" id="modal-body5">
+                   <p>SpeedBee is a program meant to test your typing speed and evaluate how long it takes you to type the given text. SpeedBee is recommended for physical keyboard input</p>
+                   <p>This program was written by Indakwa Benedict alias Bigfoot</p>
+                   <p>The background picture obtained from pexels.com, The background music from mixkit.co, Fonts from 1001fonts.com and the excerpts from frankb13.tumblr.com</p>
+                   <p>Much appreciation to everyone who took part in making this a success. </p>
+                   <p>Get in touch indakwabenedict@gmail.com</p>
+                   <p>&#169 Copyright 2022 BigfooTech</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <!--<button type="button" class="btn btn-primary">Understood</button>-->
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <audio controls autoplay id="myAudio" hidden loop>
+            <source src="song.mp3" type="audio/mpeg">
+            <p>Your browser does not support this audio element</p>
+      </audio>
+    </div>
+    
+    
+
+
+    <script src="bootstrap.js"></script>
+    <script src="ty.js "></script>
+</body>
+</html>
+
+
+

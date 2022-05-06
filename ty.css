@@ -1,0 +1,262 @@
+
+/*{
+    background-color: #3c3b3f; 
+    color: gold;
+}*/
+
+:root{
+    --primary: hsla(234, 62%, 80%, 0.15);
+    --secondary: hsla(208, 60%, 83%, 0.15);
+}
+
+@font-face{
+    font-family: myFont;
+    src: url(bigfonts.ttf);
+}
+
+@font-face{
+    font-family: myFont2;
+    src: url(crackman.ttf);
+}
+
+@font-face{
+    font-family: myFont3;
+    src: url(gargle.ttf);
+}
+
+body{
+    background: linear-gradient(135deg, var(--primary), var(--secondary)), url('8.jpg') no-repeat center center / cover;
+    /*color: gold;
+    background-image: url(8.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+
+#input{ 
+    margin-top: 5%;
+    resize: none;
+    font-size: 20px;
+    border-radius: 20px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+#text1{
+    font-size: 25px;
+    font-weight: lighter;
+    border-radius: 20px;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+
+}
+
+
+.timerDisplay{
+    margin-top: 7%;
+    color: aqua;
+    font-size: 27px;
+    font-family: myFont;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.753);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+#startTimer{   
+    margin-top: 10%;
+    color: aqua;
+    font-family: myFont;
+    border-radius: 5px;
+    padding: 3% 10%;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.753);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);    
+}
+
+#header1{
+    color: rgba(13, 14, 13, 0.685);
+    font-family: myFont2;
+    text-align: center;  
+    font-size: 298%; 
+}
+#header2{
+    font-size: x-large;
+    color: rgba(13, 14, 13, 0.479);
+    font-weight: bold;
+    text-align: center;
+}
+
+#menu-btn{
+    margin-top: 23%;
+    border-radius: 10px;
+    font-size: x-large;
+    font-weight: bold;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(5px);
+}
+.bi{
+    top: 5.5rem;
+    right: 12rem;
+    position: absolute;
+    transform: scale(2.7);
+    display: none;
+    cursor: pointer;
+}
+@media (min-width: 701px) and (max-width: 1000px){
+    .bi{
+        top: 7rem;
+        right: 12rem;
+    }
+}
+@media (min-width: 1001px) and (max-width: 1400px){
+    .bi{
+        top: 5rem;
+        right: 4rem;
+    }
+}
+@media (min-width: 1401px) and (max-width: 1530px){
+    .bi{
+        top: 5.5rem;
+        right: 8rem;
+    }
+}
+.nav-link{
+    color: rgb(0, 0, 0);    
+    font-size: x-large;
+}
+.nav-link:hover{
+    color: rgb(148, 165, 165);    
+    font-size: x-large;
+}
+
+#staticBackdropLabel{
+    font-family: myFont2;
+    font-size: 55px;
+    padding-left: 20%;
+    color: rgba(163, 23, 190, 0.664);
+}
+
+#nName{
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+input::placeholder{
+    text-align: center;
+    opacity: .5;
+}
+
+#modal-body-2{
+    font-family: myFont3;
+    font-size: 55px;
+    text-align: center;
+    color: rgb(2, 128, 128);
+}
+
+#modal-body-3{
+    font-family: myFont3;
+    font-size: 55px;
+    text-align: center;
+    color: rgb(2, 128, 128);
+}
+
+#staticBackdropLabel4{
+    margin-left: 42%;
+    font-size: xx-large;
+}
+#staticBackdropLabel5{
+    margin-left: 42%;
+    font-size: xx-large;
+}
+
+#modal-body4{
+    font-size: 20px;
+}
+#modal-body5{
+    font-size: 17px;
+}
+
+.show{
+    display: block;
+}
+
+
+
+@media (max-width: 700px){
+    #input{ 
+        font-size: 15px;
+    } 
+    
+    #text1{
+        font-size: 15px;
+    }
+    #header1{
+        font-size: 180%; 
+    }
+    #header2{
+        font-size: 16px;
+    }
+    #menu-btn{
+        margin-top: -55px;
+        margin-bottom: 30px;
+        font-size: 18px;
+    }
+    .nav-link{   
+        font-size: 15px;
+    }
+    .timerDisplay{
+        font-size: 17px;
+    }
+    #startTimer{
+        font-size: 17px;
+        margin-bottom: 3rem;
+    }
+    #staticBackdropLabel{
+        font-family: myFont2;
+        font-size: 42px;
+        padding-left: 10%;
+    }
+    #modal-body-3{
+        font-size: 25px;
+    }
+    #modal-body-2{
+        font-size: 25px;
+    }
+    #modal-body4{
+        font-size: 15px;
+    }
+    #modal-body5{
+        font-size: 13px;
+    }
+    #staticBackdropLabel4{
+        margin-left: 37%;
+        font-size: xx-large;
+    }
+    #staticBackdropLabel5{
+        margin-left: 35%;
+        font-size: xx-large;
+    }
+
+    .bi{
+        top: 13rem;
+        right: 2.5rem;
+        position: absolute;
+        transform: scale(2);
+    }
+}
